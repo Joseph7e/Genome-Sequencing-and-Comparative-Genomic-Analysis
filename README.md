@@ -1,4 +1,4 @@
-# [Genome Sequencing and Comparative Genomic Analysis]
+# Genome Sequencing and Comparative Genomic Analysis
 ---------------------------------
 
 ## **Contents**
