@@ -1,4 +1,4 @@
-# [Module-Name]
+# [Genome Sequencing and Comparative Genomic Analysis]
 ---------------------------------
 
 ## **Contents**
@@ -14,10 +14,10 @@
 + [License for Data](#license-for-data)
 
 ## **Overview**
-
+This learning module will ...
 
 ## **Background**
-
+This repository contains...
 
 ## **Before Starting**
 
