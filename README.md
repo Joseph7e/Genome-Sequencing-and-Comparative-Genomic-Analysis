@@ -16,6 +16,8 @@
 ## **Overview**
 This learning module will take users through the a detailed bioinformatic tutorial covering sequencing, assembling, assessing, and annotating a microbial genome. The workflow is then automated to process multiple samples. Finallythe batch of genome datasets are utilized for a compartative genomics analysis.
 
+Please review this document -> https://github.com/NIGMS/NIGMS-Sandbox/blob/main/docs/HowToCreateAWSSagemakerNotebooks.md
+
 
 ## **Background**
 This repository contains...
