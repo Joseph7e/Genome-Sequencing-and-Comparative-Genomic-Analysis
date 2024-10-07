@@ -1,9 +1,11 @@
 ![course card](images/nh-course-card.png)
 
-<img src="images/nh-course-card.png" alt="course card" width="400" height="300">
-
 # NH-INBRE - Genome Sequencing and Comparative Genomic Analysis
 ---------------------------------
+This module introduces you to whole-genome sequencing and comparative genomics. You will work with numerous tools to assemble and assess a micorbial genome, automate the process on many datasets, and utilize the full dataset for a comparative genomics analysis.
+
+This module will cost you about $0.00 to run end to end, assumign you shutdown and delete all resources upon completion.
+
 
 Watch this [Introduction Video]() to learn more about the module.
 
@@ -22,15 +24,13 @@ Watch this [Introduction Video]() to learn more about the module.
 ## **Overview**
 This learning module will take users through the a detailed bioinformatic tutorial covering whole-genome sequencing, *de novo* genome assembly, assembly assessment, and annotating a microbial genome. The workflow is then automated using a NextFlow workflow to process many samples through the workflow. Finally the full batch of genome datasets are utilized for a compartative genomics analysis.
 
-Please review this document -> https://github.com/NIGMS/NIGMS-Sandbox/blob/main/docs/HowToCreateAWSSagemakerNotebooks.md
-
 
 ## **Background**
 This repository contains...
 
 ## **Before Starting**
 
-We suggest starting with the NH-INBRE NIGMS module covering the basics of 
+We suggest starting with the NH-INBRE NIGMS module covering the [Fundementals of Bionformatics](https://github.com/NIGMS/Fundamentals-of-Bioinformatics) available through the [NIGMS-Sandbox](https://github.com/NIGMS/NIGMS-Sandbox). This module provides a background on working with Jupyter Notebooks and BASH, and covers important bionformatic file formats that we will use in this module. 
 
 ## **Getting Started**
 
@@ -39,27 +39,15 @@ Included here are several submodules or tutorials in the form of Jupyter noteboo
 
 ### Creating a user managed notebook 
 
-Follow the steps highlighted [here](https://github.com/STRIDES/NIHCloudLabGCP/blob/main/docs/vertexai.md) to create a new user-managed notebook in Vertex AI. Follow steps 1-8 and be especially careful to enable idle shutdown as highlighted in step 7. For this module you should select Debian 11 and Python 3 in the Environment tab in step 5. In step 6 in the Machine type tab, select n1-standard-4 from the dropdown box.
+Follow the steps highlighted [here](https://github.com/NIGMS/NIGMS-Sandbox/blob/main/docs/HowToCreateAWSSagemakerNotebooks.md) to create a new user-managed notebook in AWS Sagemaker. Follow steps 1-8 and be especially careful to stop respources between use, which is highlighted in step 9. For this module you should select conda_python3 kernel in step 8. In step 4 in the Machine type tab, select XXXX from the dropdown box.
 
-To use our module, open a new Terminal window from your new notebook instance and clone this repo using `git clone https://github.com/NIGMS/Fundamentals-of-Bioinformatics.git`. Navigate to the directory for this project. You will then see the notebooks in your environment.
+To use our module, open a new Terminal window from your new notebook instance and clone this repo using `git clone https://github.com/NIGMS/XXXXX`. Navigate to the directory for this project. You will then see the notebooks in your environment.
 
 Before you begin navigating the submodules you will need to enable extensions in the Jupyter notebook. To do this you can click on the puzzle piece icon ![enable extensions](images/extension.png) on the left most menu (down the side of the Jupyter notebook) and click on the red button that says **Enable**.  
 
 ## **Software Requirements**
 
-Conda and Docker images are utilized within this tutorial to provide easy access to a set of core bioifnormatic analysis tools. These will be installed within each submodule.
-
-fastp
-
-spades
-
-BLAST
-
-bwa
-
-samtools
-
-
+Conda and Docker images are utilized within this tutorial to provide easy access to a set of core bioifnormatic analysis tools. These will be installed at the beginning of each submodule. Please see the "software managament" submodule from the [Fundementals of Bionformatics] https://github.com/NIGMS/Fundamentals-of-Bioinformatics) for more details.
 
 
 
@@ -79,9 +67,9 @@ samtools
 
 ## **Data**
 
-The sequencing reads used in these lessons were pulled from NCBI using the accession number 
-
-SRR10056829
+Publicly available data used for the module is focused on antimicrobial resistance (AMR) gene discovery and will be 
+downloaded from the short-read archive (SRA) using the NCBIs fastq-dump tool. The publicly 
+available data used for this module is described in a manuscript comparing phenotypic and WGS-derived AMR profiles (Painset et al. 2020) and is available under the BioProject accession PRJNA505131.
 
 
 ## **Funding**
