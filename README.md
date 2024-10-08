@@ -2,13 +2,6 @@
 
 # NH-INBRE - Genome Sequencing and Comparative Genomic Analysis
 ---------------------------------
-This module introduces you to whole-genome sequencing and comparative genomics. You will work with numerous tools to assemble and assess a microbial genome, automate the process on many samples, and utilize the full dataset for a comparative genomics analysis.
-
-This module will cost you about $0.00 to run end to end, assuming you shutdown and delete all resources upon completion.
-
-
-Watch this [Introduction Video]() to learn more about the module.
-
 ## **Contents**
 
 + [Overview](#overview)
@@ -22,8 +15,11 @@ Watch this [Introduction Video]() to learn more about the module.
 + [License for Data](#license-for-data)
 
 ## **Overview**
-This learning module will take users through the a detailed bioinformatic tutorial covering whole-genome sequencing, *de novo* genome assembly, assembly assessment, and annotating a microbial genome. The workflow is then automated using a NextFlow workflow to process many samples through the workflow. Finally the full batch of genome datasets are utilized for a compartative genomics analysis.
+This module introduces you to whole-genome sequencing and comparative genomics. You will work with numerous tools to assemble and assess a microbial genome, automate the process on many samples, and utilize the full dataset for comparative genomics analyses.
 
+This module will cost you about $0.00 to run end to end, assuming you shutdown and delete all resources upon completion.
+
+Watch this [Introduction Video]() to learn more about the module.
 
 ## **Background**
 This repository contains...
