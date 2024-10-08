@@ -2,9 +2,9 @@
 
 # NH-INBRE - Genome Sequencing and Comparative Genomic Analysis
 ---------------------------------
-This module introduces you to whole-genome sequencing and comparative genomics. You will work with numerous tools to assemble and assess a micorbial genome, automate the process on many datasets, and utilize the full dataset for a comparative genomics analysis.
+This module introduces you to whole-genome sequencing and comparative genomics. You will work with numerous tools to assemble and assess a microbial genome, automate the process on many samples, and utilize the full dataset for a comparative genomics analysis.
 
-This module will cost you about $0.00 to run end to end, assumign you shutdown and delete all resources upon completion.
+This module will cost you about $0.00 to run end to end, assuming you shutdown and delete all resources upon completion.
 
 
 Watch this [Introduction Video]() to learn more about the module.
@@ -39,7 +39,7 @@ Included here are several submodules or tutorials in the form of Jupyter noteboo
 
 ### Creating a user managed notebook 
 
-Follow the steps highlighted [here](https://github.com/NIGMS/NIGMS-Sandbox/blob/main/docs/HowToCreateAWSSagemakerNotebooks.md) to create a new user-managed notebook in AWS Sagemaker. Follow steps 1-8 and be especially careful to stop respources between use, which is highlighted in step 9. For this module you should select conda_python3 kernel in step 8. In step 4 in the Machine type tab, select XXXX from the dropdown box.
+Follow the steps highlighted [here](https://github.com/NIGMS/NIGMS-Sandbox/blob/main/docs/HowToCreateAWSSagemakerNotebooks.md) to create a new user-managed notebook in AWS Sagemaker. Follow steps 1-8 and be especially careful to stop respources between use, which is highlighted in step 9. For this module you should select 'conda_python3' kernel in step 8. In step 4 in the Machine type tab, select XXXX from the dropdown box.
 
 To use our module, open a new Terminal window from your new notebook instance and clone this repo using `git clone https://github.com/NIGMS/XXXXX`. Navigate to the directory for this project. You will then see the notebooks in your environment.
 
@@ -47,8 +47,7 @@ Before you begin navigating the submodules you will need to enable extensions in
 
 ## **Software Requirements**
 
-Conda and Docker images are utilized within this tutorial to provide easy access to a set of core bioifnormatic analysis tools. These will be installed at the beginning of each submodule. Please see the "software managament" submodule from the [Fundementals of Bionformatics] https://github.com/NIGMS/Fundamentals-of-Bioinformatics) for more details.
-
+Conda installation instructions and prebuilt Docker images are utilized within this tutorial and provide easy access to a set of core bioifnormatic analysis tools. These will be installed/made available at the beginning of each submodule. Please see the "software managament" submodule from the [Fundementals of Bionformatics] https://github.com/NIGMS/Fundamentals-of-Bioinformatics) for more details.
 
 
 ## **Architecture Design**
@@ -58,7 +57,7 @@ Conda and Docker images are utilized within this tutorial to provide easy access
 
 + Submodule 1, **Introduction to genome sequence and assembly** provides an introduction to how genome sequenicng data is generated, with a focus on Illumina next-generation sequenicng platforms. The submodule starts working with the sequencing data, covering the download of data from public repositories, common quality control steps, and ends with assembly of the sequencing data.
 
-+ Submodule 2, **Assembly Assessment and Annotation** teaches you how to assess the quality of a *de novo* genome assembly and introduces importantant bionformatic tools. This is a crucial step to ensure high qulaiyt data goes into the comparative genomics module. This submodule ends with a lesson on genome annotation. 
++ Submodule 2, **Assembly Assessment and Annotation** teaches you how to assess the quality of a *de novo* genome assembly and introduces importantant bionformatic tools and file formars. This is a crucial step to ensure high qulaiyt data goes into the comparative genomics module. This submodule ends with a lesson on genome annotation. 
 
 + Submodule 3, **NextFlow automation** Reproducability and scalability are crucial in bionformatics, especially in analyses that include large numbers of genome datasets. In this module we process many datasets through the same workflow covered in submodules 1 and 2.
 
@@ -68,13 +67,11 @@ Conda and Docker images are utilized within this tutorial to provide easy access
 ## **Data**
 
 Publicly available data used for the module is focused on antimicrobial resistance (AMR) gene discovery and will be 
-downloaded from the short-read archive (SRA) using the NCBIs fastq-dump tool. The publicly 
-available data used for this module is described in a manuscript comparing phenotypic and WGS-derived AMR profiles (Painset et al. 2020) and is available under the BioProject accession PRJNA505131.
-
+downloaded from the short-read archive (SRA) using the NCBIs fastq-dump tool. The publicly available data we download in submodules 1 and 3 are described in a manuscript comparing phenotypic and WGS-derived AMR profiles (Painset et al. 2020) and is available under the BioProject accession PRJNA505131.
 
 ## **Funding**
 
-The work to create this learnign module was supported by the NH-INBRE program and the Center for Integrated Biomedical and Bioengineering Research (CIBBR) through grants from the National Institute of General Medical Sciences of the National Institutes of Health under Award Numbers P20GM103506 and P20GM113131, respectively.
+The work to create this learning module was supported by the NH-INBRE program and the Center for Integrated Biomedical and Bioengineering Research (CIBBR) through grants from the National Institute of General Medical Sciences of the National Institutes of Health under Award Numbers P20GM103506 and P20GM113131, respectively.
 
 
 ## **License for Data**
