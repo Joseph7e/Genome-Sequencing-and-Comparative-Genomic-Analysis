@@ -53,7 +53,7 @@ seqid2features = gff.get_seqid2features(feature_type=None)
 circos = Circos(seqid2size, space=1.25)
 
 for idx, sector in enumerate(circos.sectors):
-	# Plot outer track
+    # Plot outer track
 	outer_track = sector.add_track((98, 100))
 	outer_track.axis(fc="white")
 	major_interval = 100000
