@@ -1,0 +1,15 @@
+#                                                                                           --- full sequence --- -------------- this domain -------------   hmm coord   ali coord   env coord
+# target name                       accession   tlen query name           accession   qlen   E-value  score  bias   #  of  c-Evalue  i-Evalue  score  bias  from    to  from    to  from    to  acc description of target
+#               ------------------- ---------- ----- -------------------- ---------- ----- --------- ------ ----- --- --- --------- --------- ------ ----- ----- ----- ----- ----- ----- ----- ---- ---------------------
+NODE_394_length_605_cov_1.390909_1  -            201 1827334at2           -             97    0.0038   14.4   0.0   1   1   1.3e-05     0.015   12.5   0.0    35    69    33    66    30    72 0.86 # 2 # 604 # 1 # ID=394_1;partial=11;start_type=Edge;rbs_motif=None;rbs_spacer=None;gc_cont=0.328
+NODE_1026_length_344_cov_0.934256_1 -            114 1827334at2           -             97    0.0062   13.8   0.0   1   1   7.1e-06    0.0085   13.3   0.0    61    84    87   111    60   113 0.75 # 1 # 342 # 1 # ID=1026_1;partial=11;start_type=Edge;rbs_motif=None;rbs_spacer=None;gc_cont=0.333
+#
+# Program:         hmmsearch
+# Version:         3.4 (Aug 2023)
+# Pipeline mode:   SEARCH
+# Query file:      /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/databases/busco_downloads/lineages/bacteria_odb10/hmms/1827334at2.hmm
+# Target file:     /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/83/aaba4c129b9b97852fcf68831d7538/output-busco/prodigal_output/predicted_genes/predicted.faa
+# Option settings: hmmsearch --domtblout /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/83/aaba4c129b9b97852fcf68831d7538/output-busco/run_bacteria_odb10/hmmer_output/1827334at2.out --cpu 1 /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/databases/busco_downloads/lineages/bacteria_odb10/hmms/1827334at2.hmm /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/83/aaba4c129b9b97852fcf68831d7538/output-busco/prodigal_output/predicted_genes/predicted.faa 
+# Current dir:     /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/83/aaba4c129b9b97852fcf68831d7538
+# Date:            Mon Dec 16 15:34:46 2024
+# [ok]

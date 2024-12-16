@@ -1,0 +1,66 @@
+/home/share/anaconda/envs/genomics/bin/quast.py contigs.fasta -o quast_output
+
+Version: 5.2.0
+
+System information:
+  OS: Linux-5.14.0-503.15.1.el9_5.x86_64-x86_64-with-glibc2.34 (linux_64)
+  Python version: 3.10.11
+  CPUs number: 256
+
+Started: 2024-12-16 15:34:43
+
+Logging to /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/5b/8d324e539b7faef5675d7dc2444478/quast_output/quast.log
+NOTICE: Maximum number of threads is set to 64 (use --threads option to set it manually)
+
+CWD: /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/5b/8d324e539b7faef5675d7dc2444478
+Main parameters: 
+  MODE: default, threads: 64, min contig length: 500, min alignment length: 65, min alignment IDY: 95.0, \
+  ambiguity: one, min local misassembly length: 200, min extensive misassembly length: 1000
+
+Contigs:
+  Pre-processing...
+  contigs.fasta ==> contigs
+
+2024-12-16 15:34:44
+Running Basic statistics processor...
+  Contig files: 
+    contigs
+  Calculating N50 and L50...
+    contigs, N50 = 814, L50 = 199, auN = 1001.5, Total length = 472776, GC % = 33.56, # N's per 100 kbp =  0.00
+  Drawing Nx plot...
+    saved to /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/5b/8d324e539b7faef5675d7dc2444478/quast_output/basic_stats/Nx_plot.pdf
+  Drawing cumulative plot...
+    saved to /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/5b/8d324e539b7faef5675d7dc2444478/quast_output/basic_stats/cumulative_plot.pdf
+  Drawing GC content plot...
+    saved to /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/5b/8d324e539b7faef5675d7dc2444478/quast_output/basic_stats/GC_content_plot.pdf
+  Drawing contigs GC content plot...
+    saved to /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/5b/8d324e539b7faef5675d7dc2444478/quast_output/basic_stats/contigs_GC_content_plot.pdf
+  Drawing Coverage histogram (bin size: 1x)...
+    saved to /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/5b/8d324e539b7faef5675d7dc2444478/quast_output/basic_stats/coverage_histogram.pdf
+  Drawing contigs coverage histogram (bin size: 1x)...
+    saved to /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/5b/8d324e539b7faef5675d7dc2444478/quast_output/basic_stats/contigs_coverage_histogram.pdf
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding or --glimmer option to enable it.
+
+2024-12-16 15:34:45
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 2: Creating PDF with all tables and plots...
+  2 of 2: Creating Icarus viewers...
+Done
+
+2024-12-16 15:34:45
+RESULTS:
+  Text versions of total report are saved to /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/5b/8d324e539b7faef5675d7dc2444478/quast_output/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/5b/8d324e539b7faef5675d7dc2444478/quast_output/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/5b/8d324e539b7faef5675d7dc2444478/quast_output/report.html
+  PDF version (tables and plots) is saved to /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/5b/8d324e539b7faef5675d7dc2444478/quast_output/report.pdf
+  Icarus (contig browser) is saved to /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/5b/8d324e539b7faef5675d7dc2444478/quast_output/icarus.html
+  Log is saved to /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/5b/8d324e539b7faef5675d7dc2444478/quast_output/quast.log
+
+Finished: 2024-12-16 15:34:45
+Elapsed time: 0:00:01.598287
+NOTICEs: 2; WARNINGs: 0; non-fatal ERRORs: 0
+
+Thank you for using QUAST!

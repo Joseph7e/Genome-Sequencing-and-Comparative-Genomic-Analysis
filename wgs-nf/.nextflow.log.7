@@ -1,0 +1,56 @@
+Dec-16 15:16:28.199 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf
+Dec-16 15:16:28.283 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.4
+Dec-16 15:16:28.301 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/users/jlsevigny1/.nextflow/plugins; core-plugins: nf-amazon@2.5.3,nf-azure@1.6.1,nf-cloudcache@0.4.1,nf-codecommit@0.2.1,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2-patch1,nf-tower@1.9.1,nf-wave@1.4.2-patch1
+Dec-16 15:16:28.311 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Dec-16 15:16:28.312 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Dec-16 15:16:28.314 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Dec-16 15:16:28.325 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Dec-16 15:16:28.380 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
+Dec-16 15:16:28.397 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [lonely_panini] DSL2 - revision: 6f48fd4c23
+Dec-16 15:16:28.399 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Dec-16 15:16:28.399 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Dec-16 15:16:28.472 [main] DEBUG nextflow.Session - Session UUID: d514fde6-bc30-495a-891a-37f7b78e3ca6
+Dec-16 15:16:28.473 [main] DEBUG nextflow.Session - Run name: lonely_panini
+Dec-16 15:16:28.473 [main] DEBUG nextflow.Session - Executor pool size: 256
+Dec-16 15:16:28.480 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Dec-16 15:16:28.486 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=768; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Dec-16 15:16:28.509 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.04.4 build 5917
+  Created: 01-08-2024 07:05 UTC (03:05 EDT)
+  System: Linux 5.14.0-503.15.1.el9_5.x86_64
+  Runtime: Groovy 4.0.21 on OpenJDK 64-Bit Server VM 11.0.13+7-b1751.21
+  Encoding: UTF-8 (UTF-8)
+  Process: 3096511@ron.sr.unh.edu [132.177.250.79]
+  CPUs: 256 - Mem: 3 TB (167.7 GB) - Swap: 4 GB (4 GB)
+Dec-16 15:16:28.529 [main] DEBUG nextflow.Session - Work-dir: /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work [xfs]
+Dec-16 15:16:28.546 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Dec-16 15:16:28.555 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Dec-16 15:16:28.578 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Dec-16 15:16:28.588 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 257; maxThreads: 1000
+Dec-16 15:16:28.638 [main] DEBUG nextflow.Session - Session start
+Dec-16 15:16:29.419 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Dec-16 15:16:29.431 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/users/jlsevigny1/.nextflow/secrets/store.json
+Dec-16 15:16:29.438 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@426710f0] - activable => nextflow.secret.LocalSecretsProvider@426710f0
+Dec-16 15:16:29.445 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_bdc8e8160fdaa4ee: /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/main.nf
+Dec-16 15:16:29.449 [main] DEBUG nextflow.Session - Session aborted -- Cause: No signature of method: nextflow.script.ScriptBinding.path() is applicable for argument types: () values: []
+Possible solutions: each(groovy.lang.Closure), with(groovy.lang.Closure), with(boolean, groovy.lang.Closure), tap(groovy.lang.Closure), wait(), any()
+Dec-16 15:16:29.459 [main] ERROR nextflow.cli.Launcher - @unknown
+groovy.lang.MissingMethodException: No signature of method: nextflow.script.ScriptBinding.path() is applicable for argument types: () values: []
+Possible solutions: each(groovy.lang.Closure), with(groovy.lang.Closure), with(boolean, groovy.lang.Closure), tap(groovy.lang.Closure), wait(), any()
+	at nextflow.script.WorkflowBinding.invokeMethod(WorkflowBinding.groovy:111)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.script.BaseScript.invokeMethod(BaseScript.groovy:155)
+	at org.codehaus.groovy.vmplugin.v8.IndyGuardsFiltersAndSignatures.invokeGroovyObjectInvoker(IndyGuardsFiltersAndSignatures.java:151)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at Script_bdc8e8160fdaa4ee.runScript(Script_bdc8e8160fdaa4ee:7)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.script.BaseScript.run0(BaseScript.groovy:159)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.script.BaseScript.run(BaseScript.groovy:209)
+	at nextflow.script.ScriptParser.runScript(ScriptParser.groovy:236)
+	at nextflow.script.ScriptRunner.run(ScriptRunner.groovy:243)
+	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:138)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:372)
+	at nextflow.cli.Launcher.run(Launcher.groovy:503)
+	at nextflow.cli.Launcher.main(Launcher.groovy:657)

@@ -1,0 +1,17 @@
+#                                                                                           --- full sequence --- -------------- this domain -------------   hmm coord   ali coord   env coord
+# target name                       accession   tlen query name           accession   qlen   E-value  score  bias   #  of  c-Evalue  i-Evalue  score  bias  from    to  from    to  from    to  acc description of target
+#               ------------------- ---------- ----- -------------------- ---------- ----- --------- ------ ----- --- --- --------- --------- ------ ----- ----- ----- ----- ----- ----- ----- ---- ---------------------
+NODE_662_length_462_cov_1.277641_1  -            153 1036075at2           -            356   3.1e-20   69.9   4.7   1   2   2.9e-19   2.3e-16   57.2   0.6    20    72    14    66    10    83 0.87 # 3 # 461 # 1 # ID=662_1;partial=11;start_type=Edge;rbs_motif=None;rbs_spacer=None;gc_cont=0.298
+NODE_662_length_462_cov_1.277641_1  -            153 1036075at2           -            356   3.1e-20   69.9   4.7   2   2     2e-06    0.0016   14.9   0.3    73   118    87   137    72   151 0.72 # 3 # 461 # 1 # ID=662_1;partial=11;start_type=Edge;rbs_motif=None;rbs_spacer=None;gc_cont=0.298
+NODE_1833_length_217_cov_1.333333_1 -             72 1036075at2           -            356   9.3e-09   32.1   0.2   1   1   1.3e-11     1e-08   32.0   0.2   285   314    28    57    10    61 0.86 # 2 # 217 # -1 # ID=1833_1;partial=11;start_type=Edge;rbs_motif=None;rbs_spacer=None;gc_cont=0.329
+NODE_803_length_410_cov_1.259155_1  -             35 1036075at2           -            356   7.6e-06   22.6   0.3   1   1   9.7e-09   7.7e-06   22.5   0.3   129   155     7    33     2    34 0.91 # 3 # 107 # 1 # ID=803_1;partial=10;start_type=Edge;rbs_motif=None;rbs_spacer=None;gc_cont=0.343
+#
+# Program:         hmmsearch
+# Version:         3.4 (Aug 2023)
+# Pipeline mode:   SEARCH
+# Query file:      /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/databases/busco_downloads/lineages/bacteria_odb10/hmms/1036075at2.hmm
+# Target file:     /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/e6/ffff094d21d5775d3a9da2e17ddf4a/output-busco/prodigal_output/predicted_genes/predicted.faa
+# Option settings: hmmsearch --domtblout /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/e6/ffff094d21d5775d3a9da2e17ddf4a/output-busco/run_bacteria_odb10/hmmer_output/1036075at2.out --cpu 1 /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/databases/busco_downloads/lineages/bacteria_odb10/hmms/1036075at2.hmm /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/e6/ffff094d21d5775d3a9da2e17ddf4a/output-busco/prodigal_output/predicted_genes/predicted.faa 
+# Current dir:     /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/e6/ffff094d21d5775d3a9da2e17ddf4a
+# Date:            Mon Dec 16 15:34:46 2024
+# [ok]

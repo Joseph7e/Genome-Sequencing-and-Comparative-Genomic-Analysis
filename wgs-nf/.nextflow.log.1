@@ -1,0 +1,119 @@
+Dec-16 15:31:27.980 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -resume
+Dec-16 15:31:28.067 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.4
+Dec-16 15:31:28.085 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/users/jlsevigny1/.nextflow/plugins; core-plugins: nf-amazon@2.5.3,nf-azure@1.6.1,nf-cloudcache@0.4.1,nf-codecommit@0.2.1,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2-patch1,nf-tower@1.9.1,nf-wave@1.4.2-patch1
+Dec-16 15:31:28.094 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Dec-16 15:31:28.095 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Dec-16 15:31:28.098 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Dec-16 15:31:28.108 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Dec-16 15:31:28.165 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
+Dec-16 15:31:28.181 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [intergalactic_wright] DSL2 - revision: 451777f8f0
+Dec-16 15:31:28.182 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Dec-16 15:31:28.183 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Dec-16 15:31:28.258 [main] DEBUG nextflow.Session - Session UUID: 51b10c64-133b-47b6-a659-186241bbc0b8
+Dec-16 15:31:28.259 [main] DEBUG nextflow.Session - Run name: intergalactic_wright
+Dec-16 15:31:28.259 [main] DEBUG nextflow.Session - Executor pool size: 256
+Dec-16 15:31:28.266 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Dec-16 15:31:28.272 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=768; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Dec-16 15:31:28.296 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.04.4 build 5917
+  Created: 01-08-2024 07:05 UTC (03:05 EDT)
+  System: Linux 5.14.0-503.15.1.el9_5.x86_64
+  Runtime: Groovy 4.0.21 on OpenJDK 64-Bit Server VM 11.0.13+7-b1751.21
+  Encoding: UTF-8 (UTF-8)
+  Process: 3130878@ron.sr.unh.edu [132.177.250.79]
+  CPUs: 256 - Mem: 3 TB (172.3 GB) - Swap: 4 GB (4 GB)
+Dec-16 15:31:28.322 [main] DEBUG nextflow.Session - Work-dir: /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work [xfs]
+Dec-16 15:31:28.341 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Dec-16 15:31:28.350 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Dec-16 15:31:28.373 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Dec-16 15:31:28.383 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 257; maxThreads: 1000
+Dec-16 15:31:28.451 [main] DEBUG nextflow.Session - Session start
+Dec-16 15:31:29.208 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Dec-16 15:31:29.218 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/users/jlsevigny1/.nextflow/secrets/store.json
+Dec-16 15:31:29.225 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@639cb788] - activable => nextflow.secret.LocalSecretsProvider@639cb788
+Dec-16 15:31:29.384 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Dec-16 15:31:29.384 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Dec-16 15:31:29.390 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Dec-16 15:31:29.395 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=256; memory=3 TB; capacity=256; pollInterval=100ms; dumpInterval=5m
+Dec-16 15:31:29.397 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Dec-16 15:31:29.482 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Dec-16 15:31:29.482 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Dec-16 15:31:29.488 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Dec-16 15:31:29.488 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Dec-16 15:31:29.505 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Dec-16 15:31:29.506 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Dec-16 15:31:29.512 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Dec-16 15:31:29.512 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Dec-16 15:31:29.516 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Dec-16 15:31:29.516 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Dec-16 15:31:29.520 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Dec-16 15:31:29.520 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Dec-16 15:31:29.531 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: run_bwa, run_busco, run_blast, run_quast, run_spades, run_fastqc, run_fastp, run_bakta, finalizeResults, contamination_check, run_blobtools
+Dec-16 15:31:29.531 [main] DEBUG nextflow.Session - Igniting dataflow network (8)
+Dec-16 15:31:29.537 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > run_fastqc
+Dec-16 15:31:29.537 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: ./raw-reads/; pattern: *_{1,2}.fastq.gz; options: [:]
+Dec-16 15:31:29.538 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > run_fastp
+Dec-16 15:31:29.540 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > run_spades
+Dec-16 15:31:29.540 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > run_bwa
+Dec-16 15:31:29.544 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > run_busco
+Dec-16 15:31:29.545 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > run_quast
+Dec-16 15:31:29.546 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > run_blast
+Dec-16 15:31:29.548 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_852acf511dc0790f: /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/main.nf
+Dec-16 15:31:29.548 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Dec-16 15:31:29.548 [main] DEBUG nextflow.Session - Session await
+Dec-16 15:31:29.861 [Actor Thread 27] INFO  nextflow.processor.TaskProcessor - [fa/375893] Cached process > run_fastp (1)
+Dec-16 15:31:29.861 [Actor Thread 29] INFO  nextflow.processor.TaskProcessor - [f0/2e6424] Cached process > run_fastqc (2)
+Dec-16 15:31:29.861 [Actor Thread 31] INFO  nextflow.processor.TaskProcessor - [a2/71811a] Cached process > run_fastp (2)
+Dec-16 15:31:29.861 [Actor Thread 26] INFO  nextflow.processor.TaskProcessor - [5c/151578] Cached process > run_fastqc (1)
+Dec-16 15:31:29.878 [Actor Thread 37] INFO  nextflow.script.BaseScript - FASTP results: [/home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/a2/71811a5c9838d7dc5c498d0af79cc7/trimmed_R1.fastq.gz, /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/a2/71811a5c9838d7dc5c498d0af79cc7/trimmed_R2.fastq.gz]
+Dec-16 15:31:29.878 [Actor Thread 36] INFO  nextflow.script.BaseScript - FASTQC results: /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/5c/151578029a1d2c9b18f073fa91ed16/output-fastqc
+Dec-16 15:31:29.880 [Actor Thread 37] INFO  nextflow.script.BaseScript - FASTP results: [/home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/fa/3758930164cb6901b1160aee3b6ef3/trimmed_R1.fastq.gz, /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/fa/3758930164cb6901b1160aee3b6ef3/trimmed_R2.fastq.gz]
+Dec-16 15:31:29.880 [Actor Thread 36] INFO  nextflow.script.BaseScript - FASTQC results: /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/f0/2e642453e52bf17c8f19fda8ddb8c9/output-fastqc
+Dec-16 15:31:29.894 [Actor Thread 44] INFO  nextflow.processor.TaskProcessor - [3d/6bdfed] Cached process > run_spades (2)
+Dec-16 15:31:29.898 [Actor Thread 52] INFO  nextflow.script.BaseScript - Assembly results: /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/3d/6bdfedcda7826f4a97f131acbd8b1b/output-spades/contigs.fasta
+Dec-16 15:31:29.955 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-16 15:31:29.958 [Task submitter] INFO  nextflow.Session - [76/d98df9] Submitted process > run_spades (1)
+Dec-16 15:31:29.964 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-16 15:31:29.965 [Task submitter] INFO  nextflow.Session - [c8/72a973] Submitted process > run_quast (1)
+Dec-16 15:31:29.970 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-16 15:31:29.970 [Task submitter] INFO  nextflow.Session - [1e/7518cb] Submitted process > run_busco (1)
+Dec-16 15:31:29.974 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-16 15:31:29.975 [Task submitter] INFO  nextflow.Session - [c9/32b44f] Submitted process > run_blast (1)
+Dec-16 15:31:29.979 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-16 15:31:29.979 [Task submitter] INFO  nextflow.Session - [e5/eae6cd] Submitted process > run_bwa (2)
+Dec-16 15:31:29.982 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-16 15:31:29.983 [Task submitter] INFO  nextflow.Session - [0d/d9151c] Submitted process > run_bwa (1)
+Dec-16 15:31:30.368 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 7; name: run_blast (1); status: COMPLETED; exit: 0; error: -; workDir: /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/c9/32b44f8c7d92416bcd031e46a3ca13]
+Dec-16 15:31:30.369 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=768; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Dec-16 15:31:30.455 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 11; name: run_bwa (2); status: COMPLETED; exit: 0; error: -; workDir: /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/e5/eae6cdd2a7570a59b6d8e51516c719]
+Dec-16 15:31:30.456 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 10; name: run_bwa (1); status: COMPLETED; exit: 0; error: -; workDir: /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/0d/d9151cef7fe48feeb3fd5e5774ebec]
+Dec-16 15:31:31.596 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 8; name: run_quast (1); status: COMPLETED; exit: 0; error: -; workDir: /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/c8/72a973174b06ad180ea81100edde2f]
+Dec-16 15:31:31.599 [Actor Thread 75] INFO  nextflow.script.BaseScript - QUAST report: /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/c8/72a973174b06ad180ea81100edde2f/quast_output/report.txt
+Dec-16 15:31:33.674 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 9; name: run_busco (1); status: COMPLETED; exit: 0; error: -; workDir: /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/1e/7518cb917390e787505c08bd395198]
+Dec-16 15:31:38.682 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 5; name: run_spades (1); status: COMPLETED; exit: 0; error: -; workDir: /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/76/d98df95222cf398a831e2545b5d6a4]
+Dec-16 15:31:38.685 [Actor Thread 81] INFO  nextflow.script.BaseScript - Assembly results: /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/76/d98df95222cf398a831e2545b5d6a4/output-spades/contigs.fasta
+Dec-16 15:31:38.707 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-16 15:31:38.708 [Task submitter] INFO  nextflow.Session - [53/25932a] Submitted process > run_quast (2)
+Dec-16 15:31:38.712 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-16 15:31:38.713 [Task submitter] INFO  nextflow.Session - [f0/8684db] Submitted process > run_busco (2)
+Dec-16 15:31:38.717 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-16 15:31:38.717 [Task submitter] INFO  nextflow.Session - [b6/bc475d] Submitted process > run_blast (2)
+Dec-16 15:31:38.720 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-16 15:31:38.721 [Task submitter] INFO  nextflow.Session - [e4/fca28d] Submitted process > run_bwa (4)
+Dec-16 15:31:38.723 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-16 15:31:38.724 [Task submitter] INFO  nextflow.Session - [91/e8e54e] Submitted process > run_bwa (3)
+Dec-16 15:31:39.096 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 13; name: run_blast (2); status: COMPLETED; exit: 0; error: -; workDir: /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/b6/bc475df79340ed93b3799760374976]
+Dec-16 15:31:39.194 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 16; name: run_bwa (4); status: COMPLETED; exit: 0; error: -; workDir: /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/e4/fca28d4fa97c5484594b9e9aa8dcda]
+Dec-16 15:31:39.195 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 15; name: run_bwa (3); status: COMPLETED; exit: 0; error: -; workDir: /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/91/e8e54e2c624def89c985eecd4f10ab]
+Dec-16 15:31:40.331 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 14; name: run_quast (2); status: COMPLETED; exit: 0; error: -; workDir: /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/53/25932a3349dfdb995f151102fe013f]
+Dec-16 15:31:40.334 [Actor Thread 109] INFO  nextflow.script.BaseScript - QUAST report: /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/53/25932a3349dfdb995f151102fe013f/quast_output/report.txt
+Dec-16 15:31:42.337 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 12; name: run_busco (2); status: COMPLETED; exit: 0; error: -; workDir: /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/f0/8684db76b312c86e41ec7eae1744fe]
+Dec-16 15:31:42.342 [main] DEBUG nextflow.Session - Session await > all processes finished
+Dec-16 15:31:42.438 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Dec-16 15:31:42.439 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Dec-16 15:31:42.445 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+Dec-16 15:31:42.451 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=11; failedCount=0; ignoredCount=0; cachedCount=5; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=21.4s; failedDuration=0ms; cachedDuration=12.8s;loadCpus=0; loadMemory=0; peakRunning=6; peakCpus=6; peakMemory=0; ]
+Dec-16 15:31:42.605 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Dec-16 15:31:42.615 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Dec-16 15:31:42.615 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

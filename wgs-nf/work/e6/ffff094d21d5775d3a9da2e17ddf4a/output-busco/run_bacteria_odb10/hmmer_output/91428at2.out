@@ -1,0 +1,18 @@
+#                                                                                           --- full sequence --- -------------- this domain -------------   hmm coord   ali coord   env coord
+# target name                       accession   tlen query name           accession   qlen   E-value  score  bias   #  of  c-Evalue  i-Evalue  score  bias  from    to  from    to  from    to  acc description of target
+#               ------------------- ---------- ----- -------------------- ---------- ----- --------- ------ ----- --- --- --------- --------- ------ ----- ----- ----- ----- ----- ----- ----- ---- ---------------------
+NODE_250_length_745_cov_1.239130_1  -            224 91428at2             -            555   8.4e-69  229.4   0.1   1   1   8.1e-70   3.8e-67  223.9   0.1     5   173     2   224     1   224 0.83 # 1 # 672 # -1 # ID=250_1;partial=10;start_type=ATG;rbs_motif=AGGA;rbs_spacer=5-10bp;gc_cont=0.375
+NODE_1661_length_235_cov_1.750000_1 -             77 91428at2             -            555   1.2e-25   86.9   0.4   1   1   2.7e-28   1.3e-25   86.8   0.4   422   492     1    74     1    77 0.87 # 3 # 233 # -1 # ID=1661_1;partial=11;start_type=Edge;rbs_motif=None;rbs_spacer=None;gc_cont=0.351
+NODE_1012_length_347_cov_1.712329_1 -            115 91428at2             -            555   5.9e-19   64.8   1.2   1   1   1.5e-21   7.2e-19   64.5   1.2   360   414    48   105    40   113 0.90 # 3 # 347 # -1 # ID=1012_1;partial=11;start_type=Edge;rbs_motif=None;rbs_spacer=None;gc_cont=0.348
+NODE_1316_length_291_cov_1.525424_1 -             96 91428at2             -            555     3e-17   59.2   3.3   1   1   6.4e-19     3e-16   55.9   3.3   206   251     4    49     1    96 0.74 # 2 # 289 # -1 # ID=1316_1;partial=11;start_type=Edge;rbs_motif=None;rbs_spacer=None;gc_cont=0.330
+NODE_100_length_1050_cov_1.714573_1 -            349 91428at2             -            555    0.0013   14.2   0.0   1   1   7.8e-06    0.0037   12.7   0.0   358   465    27   156    22   196 0.74 # 3 # 1049 # 1 # ID=100_1;partial=11;start_type=Edge;rbs_motif=None;rbs_spacer=None;gc_cont=0.333
+#
+# Program:         hmmsearch
+# Version:         3.4 (Aug 2023)
+# Pipeline mode:   SEARCH
+# Query file:      /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/databases/busco_downloads/lineages/bacteria_odb10/hmms/91428at2.hmm
+# Target file:     /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/e6/ffff094d21d5775d3a9da2e17ddf4a/output-busco/prodigal_output/predicted_genes/predicted.faa
+# Option settings: hmmsearch --domtblout /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/e6/ffff094d21d5775d3a9da2e17ddf4a/output-busco/run_bacteria_odb10/hmmer_output/91428at2.out --cpu 1 /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/databases/busco_downloads/lineages/bacteria_odb10/hmms/91428at2.hmm /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/e6/ffff094d21d5775d3a9da2e17ddf4a/output-busco/prodigal_output/predicted_genes/predicted.faa 
+# Current dir:     /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/e6/ffff094d21d5775d3a9da2e17ddf4a
+# Date:            Mon Dec 16 15:34:46 2024
+# [ok]

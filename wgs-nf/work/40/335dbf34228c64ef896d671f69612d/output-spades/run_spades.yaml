@@ -1,0 +1,138 @@
+- STAGE: Before start
+  args: []
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: 'true'
+  short_name: before_start
+- STAGE: Read error correction
+  args: []
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: 'true'
+  short_name: ec_start
+- STAGE: Read error correction
+  args:
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/corrected/configs/config.info
+  config_dir: corrected
+  del_after:
+  - tmp/hammer_ea3hty1b
+  output_files:
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/corrected/corrected.yaml
+  path: /home/share/anaconda/envs/genomics/bin/spades-hammer
+  short_name: ec_runtool
+- STAGE: corrected reads compression
+  args:
+  - /home/share/anaconda/envs/genomics/share/spades/spades_pipeline/scripts/compress_all.py
+  - --input_file
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/corrected/corrected.yaml
+  - --ext_python_modules_home
+  - /home/share/anaconda/envs/genomics/share/spades
+  - --max_threads
+  - '24'
+  - --output_dir
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/corrected
+  - --gzip_output
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: /home/share/anaconda/envs/genomics/bin/python3
+  short_name: ec_compress
+- STAGE: Read error correction
+  args: []
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: 'true'
+  short_name: ec_finish
+- STAGE: Assembling
+  args: []
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: 'true'
+  short_name: as_start
+- STAGE: K21
+  args:
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/K21/configs/config.info
+  config_dir: K21
+  del_after: []
+  output_files: []
+  path: /home/share/anaconda/envs/genomics/bin/spades-core
+  short_name: k21
+- STAGE: K33
+  args:
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/K33/configs/config.info
+  config_dir: K33
+  del_after: []
+  output_files: []
+  path: /home/share/anaconda/envs/genomics/bin/spades-core
+  short_name: k33
+- STAGE: K55
+  args:
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/K55/configs/config.info
+  config_dir: K55
+  del_after: []
+  output_files: []
+  path: /home/share/anaconda/envs/genomics/bin/spades-core
+  short_name: k55
+- STAGE: Copy files
+  args:
+  - /home/share/anaconda/envs/genomics/share/spades/spades_pipeline/scripts/copy_files.py
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/K55/before_rr.fasta
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/before_rr.fasta
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/K55/assembly_graph_after_simplification.gfa
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/assembly_graph_after_simplification.gfa
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/K55/final_contigs.fasta
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/contigs.fasta
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/K55/first_pe_contigs.fasta
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/first_pe_contigs.fasta
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/K55/strain_graph.gfa
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/strain_graph.gfa
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/K55/scaffolds.fasta
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/scaffolds.fasta
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/K55/scaffolds.paths
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/scaffolds.paths
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/K55/assembly_graph_with_scaffolds.gfa
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/assembly_graph_with_scaffolds.gfa
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/K55/assembly_graph.fastg
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/assembly_graph.fastg
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/K55/final_contigs.paths
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/contigs.paths
+  config_dir: ''
+  del_after:
+  - .bin_reads
+  - tmp/spades_80kia3ar
+  output_files: []
+  path: /home/share/anaconda/envs/genomics/bin/python3
+  short_name: copy_files
+- STAGE: Assembling
+  args: []
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: 'true'
+  short_name: as_finish
+- STAGE: Breaking scaffolds
+  args:
+  - /home/share/anaconda/envs/genomics/share/spades/spades_pipeline/scripts/breaking_scaffolds_script.py
+  - --result_scaffolds_filename
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/scaffolds.fasta
+  - --misc_dir
+  - /home/users/jlsevigny1/nextflow-workflows/nigms-wgs/work/40/335dbf34228c64ef896d671f69612d/output-spades/misc
+  - --threshold_for_breaking_scaffolds
+  - '3'
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: /home/share/anaconda/envs/genomics/bin/python3
+  short_name: bs
+- STAGE: Terminate
+  args: []
+  config_dir: ''
+  del_after:
+  - configs
+  output_files: []
+  path: 'true'
+  short_name: terminate
