@@ -5,92 +5,126 @@ params.output_dir = './output'
 params.threads = 24
 params.blast_db = "${launchDir}/databases/blast_db/small_db"
 params.busco_db = "${launchDir}/databases/busco_downloads/"
+params.bakta_db = "${launchDir}/databases/bakta_db/db-light"
+
+// Step 0: Count number of reads and determine read length
+process ASSESS_READS {
+    input:
+    tuple val(sampleid), path(fq1), path(fq2)
+
+    output:
+    tuple val(sampleid), env('read_length'), env('num_reads'), env('throughput')
+
+    script:
+    """
+    # Calculate the read length (example using first read in fq1)
+    read_length=\$(zcat ${fq1} | head -n 2 | tail -n 1 | wc -c)
+
+    # Calculate the number of reads (divide total lines by 4)
+    num_reads=\$(zcat ${fq1} | wc -l | awk '{print \$1 / 4}')
+
+    # Calculate the throughput for paired-end reads
+    throughput=\$((read_length * num_reads * 2))
+
+    # Output the results in a Nextflow-compatible format
+    echo "${sampleid},\$read_length,\$num_reads,\$throughput"
+    """
+}
 
 
 
 // Step 1: Quality control with FastQC
-process run_fastqc {
+process RUN_FASTQC {
 //     container 'quay.io/biocontainers/fastqc:0.11.9--hdfd78af_1'
 
     input:
-    tuple val(sampleid), file(fq1), file(fq2)
+    tuple val(sampleid), path(fq1), path(fq2)
 
     output:
-    file("output-fastqc/")
+    tuple val(sampleid), path("output-fastqc/")
 
     script:
     """
     mkdir -p "output-fastqc/"
-    fastqc ${fq1} ${fq2} --outdir output-fastqc/ --threads ${params.threads}
+    
+    fastqc ${fq1} ${fq2} \
+	--outdir output-fastqc/ \
+	--threads ${params.threads}
     """
 }
 
-
 // Step 2: Trim paired-end reads with FASTP
-process run_fastp {
+process RUN_FASTP {
     input:
-    tuple val(sampleid), file(fq1), file(fq2)
+    tuple val(sampleid), path(fq1), path(fq2)
     
     output:
-    tuple file("trimmed_R1.fastq.gz"), file("trimmed_R2.fastq.gz")
+    tuple val(sampleid), path("${sampleid}.trimmed_R1.fastq.gz"), path("${sampleid}.trimmed_R2.fastq.gz")
     
     script:
     """
-    echo "Processing: $fq1 $fq2"
-
     fastp -i $fq1 -I $fq2 \
-        -o trimmed_R1.fastq.gz -O trimmed_R2.fastq.gz \
+        -o "$sampleid".trimmed_R1.fastq.gz -O "$sampleid".trimmed_R2.fastq.gz \
         --thread ${params.threads}
     """
 }
 
+// Step 3: Assemble genome with spades
+process RUN_SPADES {
+    errorStrategy 'ignore'
 
-process run_spades {
     input:
-    tuple file(fq1), file(fq2)
+    tuple val(sampleid), path(fq1), path(fq2)
 
     output:
-    file("output-spades/contigs.fasta")
+    tuple val(sampleid), path("${sampleid}.fasta")
 
     script:
     """
-    # Run SPAdes and redirect errors
-    spades.py -1 $fq1 -2 $fq2 -o output-spades --threads ${params.threads}
+    spades.py -1 $fq1 -2 $fq2 \
+	-o output-spades-${sampleid} \
+	--threads ${params.threads}
+
+	mv output-spades-${sampleid}/contigs.fasta ${sampleid}.fasta
+
+
     """
 }
 
 
-process run_bwa {
+process RUN_BWA {
     input:
-    tuple file(fq1), file(fq2), file(genome)
+    tuple val(sampleid), path(fq1), path(fq2)
+    tuple val(sampleid), path(genome)
 
     output:
-    file("mapped.bam")
+    tuple val(sampleid), path("${sampleid}.mapped.bam"), path("${sampleid}.mapped.bam.bai")
     
     script:
     """
     bwa index $genome
 
-    bwa mem $genome $fq1 $fq2 -t ${params.threads} \
-        | samtools view -bS -@ ${params.threads} - | \
-        samtools sort -@ ${params.threads} -o mapped.bam
+    bwa mem $genome $fq1 $fq2 \
+	-t ${params.threads} \
+        | samtools view -bS -@ ${params.threads} - \
+	| samtools sort -@ ${params.threads} -o ${sampleid}.mapped.bam
 
     # index output file
-    samtools index mapped.bam
+    samtools index ${sampleid}.mapped.bam
     """
 }
 
-process run_busco {
+process RUN_BUSCO {
     input:
-    file(genome)
+    tuple val(sampleid), path(genome)
 
     output:
-    file 'output-busco/short_summary.specific.bacteria_odb10.output-busco.txt'
+    tuple val(sampleid), path("output-busco-${sampleid}/short_summary.specific.bacteria_odb10.output-busco-${sampleid}.txt")
 
     script:
     """
     busco -i $genome \
-        -o output-busco \
+        -o output-busco-${sampleid} \
         -l bacteria_odb10 \
         --mode genome \
         --cpu ${params.threads} \
@@ -99,29 +133,29 @@ process run_busco {
     """
 }
 
-process run_quast {
+process RUN_QUAST {
     input:
-    file(genome)
+    tuple val(sampleid), path(genome)
 
     output:
-    file('quast_output/report.txt')
+    tuple val(sampleid), path("output-quast-${sampleid}/report.txt")
 
     script:
     """
-    quast.py $genome -o quast_output
+    	quast.py $genome -o output-quast-${sampleid}
     """
 }
 
-process run_blast {
+process RUN_BLAST {
     input:
-    file genome
+    tuple val(sampleid), path(genome)
 
     output:
-    file('genome.vs.nt.mts1.hsp1.1e25.megablast.out')
+    tuple val(sampleid), path("${sampleid}-blast-genome-vs-db.tsv")
 
     script:
     """
-        blastn \
+    blastn \
         -task megablast \
         -query $genome \
         -db ${params.blast_db} \
@@ -130,54 +164,54 @@ process run_blast {
         -max_hsps 1 \
         -num_threads ${params.threads} \
         -evalue 1e-25 \
-        -out genome.vs.nt.mts1.hsp1.1e25.megablast.out
+        -out ${sampleid}-blast-genome-vs-db.tsv
     """
 }
 
-process run_blobtools {
+process RUN_BLOBTOOLS {
     input:
-    file contigs
-    file bam
-    file blast_out
+    tuple val(sampleid), path(genome)
+    tuple val(sampleid), path(bam), path(bam_index)
+    tuple val(sampleid), path(blast_results)
 
     output:
-    file 'blobtools_output'
+    val(sampleid)
+    path("taxonomy-${sampleid}.output-blobtools-${sampleid}.blobDB.table.txt")
+    path("output-blobtools-${sampleid}.blobDB.json")
 
     script:
     """
-    blobtools create -i $contigs -b $bam -t $blast_out -o blobtools_output
+    # create database
+    blobtools create -i $genome -b $bam -t $blast_results -o output-blobtools-${sampleid}
+    
+    # produce results table
+    blobtools view -i output-blobtools-${sampleid}.blobDB.json -r all -o taxonomy-${sampleid}
+    
+    # generate figures
+    blobtools plot -i output-blobtools-${sampleid}.blobDB.json -r genus
     """
 }
 
-process contamination_check {
-    input:
-    file blobtools_output
+// process RUN_BAKTA {
+//     input:
+//     tuple val(sampleid), path(genome)
+//
+//     output:
+//     tuple
+//     file 'bakta_output-${sampleid}/*.faa'
+//     file
+//
+//     script:
+//     """
+//     bakta $genome \
+// 	--outdir output-bakta-${sampleid} \
+// 	--threads ${param.threads} \
+// 	--db ${params.bakta_db} \
+// 	--prefix ${sampleid}
+//     """
+// }
 
-    output:
-    file 'contamination_report'
-
-    script:
-    """
-    blobtools view -i blobtools_output -o contamination_report
-    """
-}
-
-process run_bakta {
-    input:
-    file genome
-
-    output:
-    file 'bakta_output/*.faa'
-    file 'bakta_output/'
-
-
-    script:
-    """
-    prokka --outdir prokka_output --prefix annotated $contigs
-    """
-}
-
-process finalizeResults {
+process FINALIZE_RESULTS {
     input:
     tuple val(sample_id), file(fastqc_results), file(contigs), file(quast_results)
 
@@ -227,46 +261,49 @@ workflow {
     .fromFilePairs(params.reads, flat: false)
     .map { sample_id, files -> tuple(sample_id, files[0], files[1]) }
 
-    fastq_files.view()
+
+    // Step 0: Count reads
+    read_info = fastq_files | ASSESS_READS
+    read_info.view()
 
     // Step 1: Run FASTQC
-    fastqc_report = fastq_files | run_fastqc
+    fastqc_report = fastq_files | RUN_FASTQC
 
     // Step 2: Trim reads with FASTP
-    trimmed_fastq = fastq_files | run_fastp
+    trimmed_fastq = fastq_files | RUN_FASTP
 
     // Step 3: Assemble genome with SPADES
-    genome = trimmed_fastq | run_spades
+    genome = trimmed_fastq | RUN_SPADES
 
-    // Step 4.1: Map reads back to genome
-    bwa_input = trimmed_fastq.combine(genome)
-    bam = bwa_input | run_bwa
+    // Step 4.1: Run BWA and Samtools
+    bam = RUN_BWA(trimmed_fastq, genome)
 
     // Step 4.2: Run BUSCO
-    busco_results = genome | run_busco
+    busco_results = genome | RUN_BUSCO
 
     // Step 4.3: Run QUAST
-    quast_report = genome | run_quast
+    quast_report = genome | RUN_QUAST
 
     // Step 4.4: Run BLAST
-    blast_results = genome | run_blast
+    blast_results = genome | RUN_BLAST
 
-//     // Step 7: Run Blobtools
-//     blob_output = blobtools(assembly, mapped_bam, blast_results)
+    // Step 5: Run Blobtools
+    blob_output = RUN_BLOBTOOLS(genome, bam, blast_results)
 
-//     // Step 8: Contamination checking
+
+//     // Step 6: Contamination checking
 //     contamination_check(blob_output)
 //
-//     // Step 9: Annotate genome with Prokka
-//     annotated_proteome = annotate(assembly)
+    // Step 7: Annotate genome with BAKTA
+//     bakta_output = RUN_BAKTA(genome)
 //
 //     // Final output: Prokka annotated proteome FAA file
 //     annotated_proteome.view { it -> println("Final FAA file: ${it}") }
 
-    fastqc_report.view { println("FASTQC results: $it") }
-    trimmed_fastq.view { println("FASTP results: $it") }
-    genome.view { println("Assembly results: $it") }
-    quast_report.view { println("QUAST report: $it") }
+//     fastqc_report.view { println("FASTQC results: $it") }
+//     trimmed_fastq.view { println("FASTP results: $it") }
+//     genome.view { println("Assembly results: $it") }
+//     quast_report.view { println("QUAST report: $it") }
 
     // Merge results for finalization
 //     finalize_input = fastqc_results
