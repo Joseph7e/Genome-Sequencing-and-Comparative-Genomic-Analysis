@@ -320,7 +320,7 @@ workflow {
 //     contamination_check(blob_output)
 //
     // Step 7: Annotate genome with BAKTA
-//     bakta_output = genome | RUN_BAKTA
+    bakta_output = genome | RUN_BAKTA
 
 //     // Final output: Prokka annotated proteome FAA file
 //     annotated_proteome.view { it -> println("Final FAA file: ${it}") }
