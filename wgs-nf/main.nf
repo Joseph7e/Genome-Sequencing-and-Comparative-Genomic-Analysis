@@ -2,7 +2,7 @@
 
 params.reads = './raw-reads/*_{1,2}.fastq.gz'
 params.output_dir = './output-dir'
-params.threads = 24
+params.threads = 2
 params.blast_db = "${launchDir}/databases/blast_db/small_db"
 params.busco_db = "${launchDir}/databases/busco_downloads/"
 params.bakta_db = "${launchDir}/databases/bakta_db/db-light"
