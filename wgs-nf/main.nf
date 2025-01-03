@@ -2,8 +2,9 @@
 
 params.reads = './raw-reads/*_{1,2}.fastq.gz'
 params.output_dir = './output-dir'
-params.threads = 24
+params.threads = 2
 params.blast_db = "${launchDir}/databases/blast_db/small_db"
+// params.blast_db = "${launchDir}/databases/blast_db/ref_prok_rep_genomes"
 params.busco_db = "${launchDir}/databases/busco_downloads/"
 params.bakta_db = "${launchDir}/databases/bakta_db/db-light"
 
@@ -319,7 +320,7 @@ workflow {
 //     contamination_check(blob_output)
 //
     // Step 7: Annotate genome with BAKTA
-    bakta_output = genome | RUN_BAKTA
+//     bakta_output = genome | RUN_BAKTA
 
 //     // Final output: Prokka annotated proteome FAA file
 //     annotated_proteome.view { it -> println("Final FAA file: ${it}") }
