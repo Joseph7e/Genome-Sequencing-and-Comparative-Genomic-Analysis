@@ -1,7 +1,7 @@
 #!/usr/bin/env nextflow
 
 params.reads = './raw-reads/*_{1,2}.fastq.gz'
-params.output_dir = './output'
+params.output_dir = './output-dir'
 params.threads = 24
 params.blast_db = "${launchDir}/databases/blast_db/small_db"
 params.busco_db = "${launchDir}/databases/busco_downloads/"
@@ -14,6 +14,7 @@ process ASSESS_READS {
 
     output:
     tuple val(sampleid), env('read_length'), env('num_reads'), env('throughput')
+
 
     script:
     """
@@ -41,7 +42,10 @@ process RUN_FASTQC {
     tuple val(sampleid), path(fq1), path(fq2)
 
     output:
-    tuple val(sampleid), path("output-fastqc/")
+    tuple val(sampleid), path( "output-fastqc/*.html" ), path( "output-fastqc/*.zip" )
+
+
+    publishDir "${params.output_dir}/output-fastqc", pattern: "output-fastqc/*.html", mode: 'copy'
 
     script:
     """
@@ -79,6 +83,8 @@ process RUN_SPADES {
     output:
     tuple val(sampleid), path("${sampleid}.fasta")
 
+    publishDir "${params.output_dir}/output-genome/", mode: 'copy', saveAs: { "${sampleid}.fasta" }
+
     script:
     """
     spades.py -1 $fq1 -2 $fq2 \
@@ -94,8 +100,7 @@ process RUN_SPADES {
 
 process RUN_BWA {
     input:
-    tuple val(sampleid), path(fq1), path(fq2)
-    tuple val(sampleid), path(genome)
+    tuple val(sampleid), path(fq1), path(fq2), path(genome)
 
     output:
     tuple val(sampleid), path("${sampleid}.mapped.bam"), path("${sampleid}.mapped.bam.bai")
@@ -121,6 +126,8 @@ process RUN_BUSCO {
     output:
     tuple val(sampleid), path("output-busco-${sampleid}/short_summary.specific.bacteria_odb10.output-busco-${sampleid}.txt")
 
+    publishDir "${params.output_dir}/output-busco/", mode: 'copy', saveAs: { "${sampleid}_busco_report.txt" }
+
     script:
     """
     busco -i $genome \
@@ -140,6 +147,8 @@ process RUN_QUAST {
     output:
     tuple val(sampleid), path("output-quast-${sampleid}/report.txt")
 
+    publishDir "${params.output_dir}/output-quast/", mode: 'copy', saveAs: { "${sampleid}_report.txt" }
+
     script:
     """
     	quast.py $genome -o output-quast-${sampleid}
@@ -152,6 +161,8 @@ process RUN_BLAST {
 
     output:
     tuple val(sampleid), path("${sampleid}-blast-genome-vs-db.tsv")
+
+    publishDir "${params.output_dir}/output-blast/", mode: 'copy'
 
     script:
     """
@@ -170,14 +181,16 @@ process RUN_BLAST {
 
 process RUN_BLOBTOOLS {
     input:
-    tuple val(sampleid), path(genome)
-    tuple val(sampleid), path(bam), path(bam_index)
-    tuple val(sampleid), path(blast_results)
+    tuple val(sampleid), path(genome), path(bam), path(bam_index), path(blast_results)
 
     output:
     val(sampleid)
-    path("taxonomy-${sampleid}.output-blobtools-${sampleid}.blobDB.table.txt")
-    path("output-blobtools-${sampleid}.blobDB.json")
+    path("${sampleid}_table.tsv")
+    path("${sampleid}_blobplot.png")
+    path("${sampleid}_blobplot_read_cov.png")
+
+    publishDir "${params.output_dir}/output-blobtools/", mode: 'copy'
+
 
     script:
     """
@@ -189,31 +202,39 @@ process RUN_BLOBTOOLS {
     
     # generate figures
     blobtools plot -i output-blobtools-${sampleid}.blobDB.json -r genus
+
+    # rename files
+    mv "taxonomy-${sampleid}.output-blobtools-${sampleid}.blobDB.table.txt" "${sampleid}_table.tsv"
+    mv "output-blobtools-${sampleid}.blobDB.json.bestsum.genus.p8.span.100.blobplot.bam0.png" "${sampleid}_blobplot.png"
+    mv "output-blobtools-${sampleid}.blobDB.json.bestsum.genus.p8.span.100.blobplot.read_cov.bam0.png" "${sampleid}_blobplot_read_cov.png"
     """
 }
 
-// process RUN_BAKTA {
-//     input:
-//     tuple val(sampleid), path(genome)
-//
-//     output:
-//     tuple
-//     file 'bakta_output-${sampleid}/*.faa'
-//     file
-//
-//     script:
-//     """
-//     bakta $genome \
-// 	--outdir output-bakta-${sampleid} \
-// 	--threads ${param.threads} \
-// 	--db ${params.bakta_db} \
-// 	--prefix ${sampleid}
-//     """
-// }
+process RUN_BAKTA {
+    input:
+    tuple val(sampleid), path(genome)
+
+    output:
+    tuple val(sampleid),  file("output-bakta-${sampleid}/${sampleid}.faa"), file("output-bakta-${sampleid}/${sampleid}.gff3")
+
+    publishDir "${params.output_dir}/output-bakta/", mode: 'copy'
+
+    script:
+    """
+
+    echo $genome $sampleid
+
+    bakta ${genome} \
+	--output output-bakta-${sampleid} \
+	--threads ${params.threads} \
+	--db ${params.bakta_db} \
+	--prefix ${sampleid}
+    """
+ }
 
 process FINALIZE_RESULTS {
     input:
-    tuple val(sample_id), file(fastqc_results), file(contigs), file(quast_results)
+    tuple val(sample_id), file(fastqc_results), file(contigs), file(quast_results), file(busco_results),
 
     output:
     file("${sample_id}_final_report.txt") into final_output
@@ -276,7 +297,9 @@ workflow {
     genome = trimmed_fastq | RUN_SPADES
 
     // Step 4.1: Run BWA and Samtools
-    bam = RUN_BWA(trimmed_fastq, genome)
+    bwa_channel = trimmed_fastq.join(genome)
+    bam = RUN_BWA(bwa_channel)
+    //bam = RUN_BWA(trimmed_fastq, genome)
 
     // Step 4.2: Run BUSCO
     busco_results = genome | RUN_BUSCO
@@ -288,15 +311,16 @@ workflow {
     blast_results = genome | RUN_BLAST
 
     // Step 5: Run Blobtools
-    blob_output = RUN_BLOBTOOLS(genome, bam, blast_results)
-
+    busco_channel = genome.join(bam).join(blast_results)
+    //blob_output = RUN_BLOBTOOLS(genome, bam, blast_results)
+    blob_output = RUN_BLOBTOOLS(busco_channel)
 
 //     // Step 6: Contamination checking
 //     contamination_check(blob_output)
 //
     // Step 7: Annotate genome with BAKTA
-//     bakta_output = RUN_BAKTA(genome)
-//
+    bakta_output = genome | RUN_BAKTA
+
 //     // Final output: Prokka annotated proteome FAA file
 //     annotated_proteome.view { it -> println("Final FAA file: ${it}") }
 
@@ -322,3 +346,4 @@ workflow {
 //     println "Reports generated: report.html, timeline.html, trace.txt"
 //     println "Final results available in the 'output/' directory."
 // }
+
