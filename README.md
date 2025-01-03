@@ -5,7 +5,6 @@
 ## **Contents**
 
 + [Overview](#overview)
-+ [Background](#background)
 + [Before Starting](#before-starting)
 + [Getting Started](#getting-started)
 + [Software Requirements](#software-requirements)
@@ -19,10 +18,7 @@ This module introduces you to whole-genome sequencing and comparative genomics. 
 
 This module will cost you about $0.00 to run end to end, assuming you shutdown and delete all resources upon completion.
 
-Watch this [Introduction Video]() to learn more about the module.
-
-## **Background**
-This repository contains...
+Watch this [Introductional Video]() to learn more about the module.
 
 ## **Before Starting**
 
@@ -32,15 +28,12 @@ We suggest starting with the NH-INBRE NIGMS module covering the [Fundementals of
 
 Included here are several submodules or tutorials in the form of Jupyter notebooks.
 
-link to submodule 1
+- **Submodule 1:** Introduction to Genome Sequencing and Assembly
+- **Submodule 2:** Genome Assessment and Genome Annotation
+- **Submodule 3:** Workflow Automation and Acquisition of Public datasets
+- **Submodule 4:** Comparative Genomics Analysis
 
-link to submodule 2
-
-rewrite below anout yhis module
-
-The purpose of these submodules is to help users familiarize themselves with the cloud computing environment in the specific context of working with genomics data and software packages to analyze genomics data. 
-
-These tutorials accomplish this by going step-by-step introducing users to the cloud environment, the terminal interface, the BASH coding language, genomics file formats, the conda software package manager, and methods for mitigating common coding errors. These lessons build familiarity with the terminal environment and set users up to begin working with their own datasets in the terminal environment. 
+The purpose of these submodules is to help users learn how to perform a comparative genomics analysis. The tutorial focuses on using standard bioinformatic tools in the command-line enviornment. To begin, users will learn how DNA and RNA sequencing data is produced and work through the process of reconstructing an organisms genome (Submodule 1). Users will then learn how to assess a genome for quality and completeness and how to identify genes and other features of interest (Submodule 2). After that users will learn how to automate the workflow using Nextflow and how to incorporate publically available genomic datasets (Submodule 3). Users will then perform a comparative genomic analysis by comparing gene sets and investigating the evolutionary relationships across the genomes (Submodule 4).
 
 For additional technical details on interfacing with the cloud users should reference [NIH Cloud Lab README](https://github.com/STRIDES/NIHCloudLabGCP).
 
@@ -55,7 +48,7 @@ Before you begin navigating the submodules you will need to enable extensions in
 
 ## **Software Requirements**
 
-Conda installation instructions and prebuilt Docker images are utilized within this tutorial and provide easy access to a set of core bioifnormatic analysis tools. These will be installed/made available at the beginning of each submodule. Please see the "software managament" submodule from the [Fundementals of Bionformatics] https://github.com/NIGMS/Fundamentals-of-Bioinformatics) for more details.
+Conda installation instructions are provided, but prebuilt Docker images are utilized to ensure stability and provide easy access to a set of core bioinformatic analysis tools. Software will be described at the beginning of each submodule. Please see the "software managament" submodule from the [Fundementals of Bionformatics] https://github.com/NIGMS/Fundamentals-of-Bioinformatics) for more details.
 
 
 ## **Architecture Design**
@@ -63,19 +56,18 @@ Conda installation instructions and prebuilt Docker images are utilized within t
 ![workflow diagram](images/nh-architecture-diagram.png)
 
 
-+ Submodule 1, **Introduction to genome sequence and assembly** provides an introduction to how genome sequenicng data is generated, with a focus on Illumina next-generation sequenicng platforms. The submodule starts working with the sequencing data, covering the download of data from public repositories, common quality control steps, and ends with assembly of the sequencing data.
++ Submodule 1, **Introduction to Genome Sequencing and Assembly** provides an introduction to how genome sequenicng data is generated, with a focus on Illumina next-generation sequenicng platforms. The submodule starts working with the sequencing data, covering the download of data from public repositories, common quality control steps, and ends with assembly of the sequencing data.
 
-+ Submodule 2, **Assembly Assessment and Annotation** teaches you how to assess the quality of a *de novo* genome assembly and introduces importantant bionformatic tools and file formars. This is a crucial step to ensure high qulaiyt data goes into the comparative genomics module. This submodule ends with a lesson on genome annotation. 
++ Submodule 2, **Genome Assessment and Genome Annotation** teaches you how to assess the quality of a *de novo* genome assembly and introduces importantant bionformatic tools and file formars. This is a crucial step to ensure high quality data goes into the comparative genomics module. This submodule ends with a lesson on genome annotation. 
 
-+ Submodule 3, **NextFlow automation** Reproducability and scalability are crucial in bionformatics, especially in analyses that include large numbers of genome datasets. In this module we process many datasets through the same workflow covered in submodules 1 and 2.
++ Submodule 3, **Workflow Automation and Acquisition of Public Datasets** Reproducability and scalability are crucial in bionformatics, especially in analyses that include large numbers of genome datasets. In this module we process many datasets through the same workflow covered in submodules 1 and 2.
 
-+ Submodule 4, **Comparative Genomics** The final module combines the output from all other submodules and runs a comparative genomics analysis using the tool Orthofinder. This module includes the generation of the final tables and visualiztions.
++ Submodule 4, **Comparative Genomics Analysis** The final module combines the output from all other submodules and runs a comparative genomics analysis using the tool Orthofinder. This module includes the generation of the final tables and visualiztions.
 
 
 ## **Data**
 
-Publicly available data used for the module is focused on antimicrobial resistance (AMR) gene discovery and will be 
-downloaded from the short-read archive (SRA) using the NCBIs fastq-dump tool. The publicly available data we download in submodules 1 and 3 are described in a manuscript comparing phenotypic and WGS-derived AMR profiles (Painset et al. 2020) and is available under the BioProject accession PRJNA505131.
+Publicly available data used for the module is focused on antimicrobial resistance (AMR) gene discovery and will be downloaded from the short-read archive (SRA) using the NCBIs fastq-dump tool. The publicly available data we download in submodules 1 and 3 are described in a manuscript comparing phenotypic and WGS-derived AMR profiles (Painset et al. 2020) and is available under the BioProject accession PRJNA505131.
 
 ## **Funding**
 
