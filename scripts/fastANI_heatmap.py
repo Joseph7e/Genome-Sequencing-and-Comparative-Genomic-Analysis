@@ -7,7 +7,6 @@ import matplotlib.pyplot as plt
 from scipy.cluster.hierarchy import linkage, dendrogram
 from scipy.spatial.distance import squareform
 import argparse
-import os
 
 # parses command-line arguments
 def parse_args():
@@ -43,7 +42,7 @@ clustermap = sns.clustermap(
     col_linkage=linkage_matrix,
     cmap='RdYlBu_r',  # Color map for the heatmap
     linewidths=0.5,
-    figsize=(10, 8),
+    figsize=(20, 16),
     dendrogram_ratio=(.2, .2),  # Adjust the size of the dendrograms
     cbar_pos=(0.02, 0.9, 0.03, 0.15)  # Colorbar position
 )

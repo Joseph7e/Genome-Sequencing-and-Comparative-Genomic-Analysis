@@ -1,3 +1,5 @@
+#! /usr/bin/env python3
+
 ### 1.2.2 Generate plot showing the cost of sequencing genomes over time
 
 import pandas as pd
