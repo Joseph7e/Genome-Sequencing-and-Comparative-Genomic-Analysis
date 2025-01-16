@@ -6,9 +6,20 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from scipy.cluster.hierarchy import linkage, dendrogram
 from scipy.spatial.distance import squareform
+import argparse
+import os
+
+# parses command-line arguments
+def parse_args():
+    parser = argparse.ArgumentParser(description="Creates a heatmap from fastANI results")
+    parser.add_argument("--input", "-i", help="FastANI results to make a heatmap from")
+    parser.add_argument("--out", help="Name of the resulting heatmap")
+    return parser.parse_args()
+
+args = parse_args()
 
 # Read data from the file
-x = pd.read_table("fastANI_sample_output.txt", header=None)
+x = pd.read_table(args.input, header=None)
 
 # Convert to matrix format using pivot
 data = x.pivot(index=0, columns=1, values=2)
@@ -39,5 +50,5 @@ clustermap = sns.clustermap(
 
 clustermap.fig.suptitle('Heatmap with Cladogram Based on Percent Identity Matrix', y=1.05)
 
-plt.savefig("fastANI_sample_heatmap.jpg", bbox_inches="tight")
+plt.savefig(args.out, bbox_inches="tight")
 
