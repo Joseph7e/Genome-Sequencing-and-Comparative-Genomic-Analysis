@@ -54,7 +54,7 @@ for og, sample_list in contents_dict.items():
 
 orthogroups = from_contents(transpose_contents)
 matplotlib.rcParams["font.size"] = 7.25
-ax_dict = UpSet(orthogroups, subset_size="count", show_counts="%d", show_percentages=True, sort_categories_by="-input", sort_by="-degree").plot()
+ax_dict = UpSet(orthogroups, subset_size="count", show_counts="%d", show_percentages=True, sort_categories_by="-input", sort_by="cardinality").plot()
 
 # Save the plot to a file
 plt.savefig(args.out)
