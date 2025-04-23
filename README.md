@@ -47,9 +47,13 @@ For additional technical details on interfacing with the cloud users should refe
 
 ## Creating a notebook 
 
-Follow the steps highlighted [here](https://github.com/NIGMS/NIGMS-Sandbox/blob/main/docs/HowToCreateAWSSagemakerNotebooks.md) to create a newnotebook in Amazon Sagemaker. Follow steps 1-8 and be especially careful to stop respources between use, which is highlighted in step 9. For this module you should select 'conda_python3' kernel in step 8. In step 4 in the Machine type tab, select '**ml.m5.8xlarge**' from the dropdown box. This provides 32 vCPUs and 128 Gb RAM. Increase the **storage to 100 GB**. Please see the note below about software requirements and the custom container setup.
+Follow the steps highlighted [here](https://github.com/NIGMS/NIGMS-Sandbox/blob/main/docs/HowToCreateAWSSagemakerNotebooks.md) to create a new notebook in Amazon Sagemaker Studio. Start at the section about a third of the way down called **Set up SageMaker Studio**. Follow steps 1-8 carefully. When setting up the 'Domain' in **step 5** you need to provide a link to a custom container for this project, this is an image that provides the software used throughout the tutorial (see software requirements section below). In this step click on 'Environment' in the top banner followed by 'Attach image' on the right. Attach the custom image container using the URI '009160071907.dkr.ecr.us-east-1.amazonaws.com/unh/custombuilds:1.4'. Provide a name for your image and be sure to change the 'Image type' to 'SageMaker Studio image', provide a kernel name, and click submit.  
 
-To use our module, open a new Terminal window from your new notebook instance and clone this repo using `git clone https://github.com/NIGMS/XXXXX`. Navigate to the directory for this project. You will then see the notebooks in your environment.
+Continue on to the section labelled '**Option 1 - JupyterLab**' and follow steps 1-7, be especially careful to stop resources between use, which is highlighted in step 7. In step 4 you will select your machine type, select'**ml.m5.8xlarge**' from the dropdown box, this provides 32 vCPUs and 128 Gb RAM. Increase the **storage to 100 GB**. Be sure to **select the image you created** from the dropdown menu.  
+
+To use our module, open a new terminal window from your notebook instance and clone this repository using `git clone https://github.com/NIGMS/XXXXX`. You can also do this from the top banner by clicking 'Git' followed by 'Git Clone Repo' and pasting in the repository name.
+
+On the left hand side of the page you can then navigate to the directory for this project where you will see this README.md file and several submodules. Double click the first submodule and you can begin the lesson.
 
 Before you begin navigating the submodules you will need to enable extensions in the Jupyter notebook. To do this you can click on the puzzle piece icon ![enable extensions](images/extension.png) on the left most menu (down the side of the Jupyter notebook) and click on the red button that says **Enable**.  
 
@@ -58,7 +62,7 @@ Before you begin navigating the submodules you will need to enable extensions in
 
 Conda installation instructions are provided within each submodule, but prebuilt Docker images are utilized to ensure stability and provide easy access to a set of core bioinformatic analysis tools. Software will be described at the beginning of each submodule. Please see the "software managament" submodule from the [Fundementals of Bionformatics] https://github.com/NIGMS/Fundamentals-of-Bioinformatics) for more details on conda-based installations.
 
-When setting up your notebook you will utilize the following container (XXXXXXX).
+When setting up your notebook, you will utilize a custom Docker image by running it in a container. During the setup process, you selected a prebuilt image (URI: 009160071907.dkr.ecr.us-east-1.amazonaws.com/unh/custombuilds:1.4), which includes all the software you need. This image is configured to ensure that all dependencies are installed and work seamlessly together.
 
 ## **Data**
 
