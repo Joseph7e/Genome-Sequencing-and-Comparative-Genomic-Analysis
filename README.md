@@ -26,7 +26,7 @@ We suggest starting with the NH-INBRE NIGMS module covering the [Fundamentals of
 
 ## **Getting Started**
 
-Included here are several submodules or tutorials in the form of Jupyter notebooks. The purpose of these submodules is to help users learn how to perform a comparative genomics analysis. The tutorial focuses on using standard bioinformatic tools in the command-line enviornment. To begin, users will learn how DNA and RNA sequencing data is produced and work through the process of reconstructing an organisms genome (Submodule 1). Users will then learn how to assess a genome for quality and completeness and how to identify genes and other features of interest (Submodule 2). After that users will learn how to automate the workflow using Nextflow and how to incorporate publically available genomic datasets (Submodule 3). Users will then perform a comparative genomic analysis by comparing gene sets and investigating the evolutionary relationships across the genomes (Submodule 4).
+Included here are several submodules or tutorials in the form of Jupyter notebooks. The purpose of these submodules is to help users learn how to perform a comparative genomics analysis using standard bioinformatic tools in the command-line enviornment. To begin, users will learn how DNA and RNA sequencing data is produced and work through the process of reconstructing an organisms genome. They will then learn how to assess the genome for quality, annotate the genome, and perform a comparative analysis with other genome datasets.
 
 For additional technical details on interfacing with the cloud users should reference [NIH Cloud Lab README](https://github.com/STRIDES/NIHCloudLabGCP).
 
