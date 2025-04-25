@@ -2,11 +2,13 @@
 
 params.reads = './raw-reads/*_{1,2}.fastq.gz'
 params.output_dir = './output-dir'
-params.threads = 2
-params.blast_db = "${launchDir}/databases/blast_db/small_db"
+params.threads = 6
+params.blast_db = "${launchDir}/databases/blast_db/blast_db"
 // params.blast_db = "${launchDir}/databases/blast_db/ref_prok_rep_genomes"
 params.busco_db = "${launchDir}/databases/busco_downloads/"
-params.bakta_db = "${launchDir}/databases/bakta_db/db-light"
+params.bakta_db = "${launchDir}/databases/bakta_db/"
+params.blob_taxdb = "${launchDir}/databases/blast_db/nodesDB.txt"
+params.blob_lookup = "${launchDir}/databases/blast_db/accessions_to_taxids.txt"
 
 // Step 0: Count number of reads and determine read length
 process ASSESS_READS {
@@ -195,9 +197,13 @@ process RUN_BLOBTOOLS {
 
     script:
     """
+
+    # prepare blast results
+    blobtools taxify -f $blast_results -m ${params.blob_lookup} -s 0 -t 1 -o blast_taxified
+
     # create database
-    blobtools create -i $genome -b $bam -t $blast_results -o output-blobtools-${sampleid}
-    
+    #blobtools create -i $genome -b $bam -t $blast_results -o output-blobtools-${sampleid}
+    blobtools create -i $genome -b $bam -t blast_taxified.${sampleid}-blast-genome-vs-db.tsv.taxified.out -o output-blobtools-${sampleid} --db ${params.blob_taxdb}
     # produce results table
     blobtools view -i output-blobtools-${sampleid}.blobDB.json -r all -o taxonomy-${sampleid}
     
