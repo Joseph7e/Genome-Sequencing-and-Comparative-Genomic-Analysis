@@ -9,5 +9,5 @@ mkdir -p "$output_dir"
 
 while read -r accession; do
     echo "Downloading $accession..."
-    fastq-dump --outdir "$output_dir" --gzip --skip-technical --readids --read-filter pass --dumpbase --split-3 --clip "$accession"
+    fastq-dump --outdir "$output_dir" --gzip --split-files "$accession"
 done < "$sra_list"
