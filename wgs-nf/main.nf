@@ -2,7 +2,7 @@
 
 params.reads = './raw-reads/*_{1,2}.fastq.gz'
 params.output_dir = './output-dir'
-params.threads = 6
+params.threads = 32
 params.blast_db = "${launchDir}/databases/blast_db/blast_db"
 // params.blast_db = "${launchDir}/databases/blast_db/ref_prok_rep_genomes"
 params.busco_db = "${launchDir}/databases/busco_downloads/"
